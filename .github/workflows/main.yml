@@ -5,14 +5,13 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt update install git python3-pip python3 python3-venv
+      - run: sudo apt update && sudo apt install git python3-pip python3 python3-venv python-is-python3
       - run: python3 -m venv wikipron
       - run: source wikipron/bin/activate
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: pip install -U pip setuptools && pip install -r requirements.txt && pip install --no-deps -e .
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+      - name: Update codes
+        run: cd data/scrape/lib && python3 codes.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
