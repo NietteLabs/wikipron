@@ -14,4 +14,10 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Update codes
         run: cd data/scrape/lib && python3 codes.py
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Pallas da Silva Guedes
+          author_email: edsondasilvaguedes0@gmail.com
+          message: 'Update Codes'
+          add: 'data/scrape/lib/languages.json'
