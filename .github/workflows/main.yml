@@ -1,4 +1,4 @@
-data/scrape/libname: GitHub Actions Demo
+name: Update WikiPron data
 run-name: ${{ github.actor }} Update PT data
 on: workflow_dispatch
 permissions:
