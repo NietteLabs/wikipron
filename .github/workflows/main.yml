@@ -2,19 +2,19 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} Update PT data
 on: workflow_dispatch
 permissions:
-  contents: read
+  contents: write
   pages: write
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Install packages for python-venv and create venv.
       - run: sudo apt update && sudo apt install git python3-pip python3 python3-venv python-is-python3
       - run: python3 -m venv wikipron
       - run: source wikipron/bin/activate
-      - name: Check out repository code
+      - name: Check out repository code and install requirements
         uses: actions/checkout@v4
       - run: pip install -U pip setuptools && pip install -r requirements.txt && pip install --no-deps -e .
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Update codes
         run: cd data/scrape/lib && python3 codes.py
       - name: Commit changes
@@ -23,4 +23,4 @@ jobs:
           author_name: Pallas da Silva Guedes
           author_email: edsondasilvaguedes0@gmail.com
           message: 'Update Codes'
-          add: 'data/scrape/lib/languages.json'
+          add: 'languages.json'
