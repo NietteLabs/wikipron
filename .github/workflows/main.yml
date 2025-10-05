@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+data/scrape/libname: GitHub Actions Demo
 run-name: ${{ github.actor }} Update PT data
 on: workflow_dispatch
 permissions:
@@ -22,4 +22,4 @@ jobs:
           author_name: Pallas da Silva Guedes
           author_email: edsondasilvaguedes0@gmail.com
           message: 'Update Codes'
-          add: 'languages.json'
+          add: 'data/scrape/lib/languages.json'
