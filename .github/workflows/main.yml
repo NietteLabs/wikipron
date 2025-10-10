@@ -16,10 +16,17 @@ jobs:
       - run: pip install -U pip setuptools && pip install -r requirements.txt && pip install --no-deps -e .
       - name: Update codes
         run: cd data/scrape/lib && python3 codes.py
+      - name: Update Dataset (por)
+        run: cd data/scrape/
+        run: ./scrape --restriction='por'
+        run: ./postprocess
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: Pallas da Silva Guedes
-          author_email: edsondasilvaguedes0@gmail.com
-          message: 'Update Codes'
-          add: 'data/scrape/lib/languages.json'
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: 'Update Codes and por data'
+          add: |
+            - data/scrape/lib/languages.json
+            - data/scrape/summary.tsv 
+            - data/scrape/tsv/por*
