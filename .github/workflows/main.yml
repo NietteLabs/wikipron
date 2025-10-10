@@ -17,9 +17,7 @@ jobs:
       - name: Update codes
         run: cd data/scrape/lib && python3 codes.py
       - name: Update Dataset (por)
-        run: cd data/scrape/
-        run: ./scrape --restriction='por'
-        run: ./postprocess
+        run: cd data/scrape/ && ./scrape --restriction='por' && ./postprocess
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
